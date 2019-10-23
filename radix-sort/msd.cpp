@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include <random>
+#include <algorithm>
 using namespace std;
 using ll = long long;
 const ll MAX_N = 1e9;
