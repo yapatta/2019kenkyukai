@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/yuzi/keio/sfc/2019kenkyukai/radix-sort/msd.cpp
+iostream
+-
+vector
+-
+cmath
+-
+random
+-
+algorithm
+-
+

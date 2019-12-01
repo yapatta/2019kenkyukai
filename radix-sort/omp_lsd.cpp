@@ -1,13 +1,12 @@
 #include <iostream>
+#include <omp.h>
 #include <vector>
 #include <random>
 #include <algorithm>
-#include <time.h>
-#include <omp.h>
 using namespace std;
 using ll = long long;
 const ll MAX_N = 1e9;
-#define KEY 256
+#define KEY 16
 ll vec[MAX_N];
 
 ll getmax(ll *a, ll n) {
@@ -28,12 +27,11 @@ void countsort(ll *a, ll n, ll exp) {
 	for(i=1;i<KEY;i++) {
 		count[i] += count[i-1];
 	}
-	
+
 	for(i=n-1;i>=0;i--) {
 		result[count[(a[i] / exp) % KEY] - 1] = a[i];
 		count[(a[i] / exp) % KEY]--;
 	}
-
 	for(i=0;i<n;i++) {
 		a[i] = result[i];
 	}
@@ -57,36 +55,24 @@ int main() {
 
 	for(ll i=0;i<n;i++) vec[i] = mt();
 	cout << "Before sorting (quick sort)" << endl;
-	clock_t st = clock();
-	/*
 	for(ll i=0;i<n;i++) {
 		printf("%lld%c", vec[i], (i==n-1) ? '\n' : ' ');
 	}
-	*/
 	sort(vec, vec+n);
-	clock_t en = clock();
-	cout << "finished" << " " << en-st << endl;
-	/*
+	cout << "finished" << endl;
 	for(ll i=0;i<n;i++) {
 		printf("%lld%c", vec[i], (i==n-1) ? '\n' : ' ');
 	}
-	*/
 
 	for(ll i=0;i<n;i++) vec[i] = mt();
 	cout << "Before sorting (lsd radix sort)" << endl;
-	/*
 	for(ll i=0;i<n;i++) {
 		printf("%lld%c", vec[i], (i==n-1) ? '\n' : ' ');
 	}
-	*/
-	st = clock();
 	radix_sort(vec, n);
-	en = clock();
-	cout << "finished" << " " << en-st <<endl;
-	/*
+	cout << "finished" << endl;
 	for(ll i=0;i<n;i++) {
 		printf("%lld%c", vec[i], (i==n-1) ? '\n' : ' ');
 	}
-	*/
 }
 
